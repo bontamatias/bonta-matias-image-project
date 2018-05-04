@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=screen
+comment0.target=void\ paint(java.awt.Graphics)
+comment1.params=displayImage
+comment1.target=Display(java.awt.image.BufferedImage)
+comment2.params=
+comment2.target=java.awt.Dimension\ getPreferredSize()
+comment3.params=displayImage
+comment3.target=void\ go(java.awt.image.BufferedImage)
+comment4.params=e
+comment4.target=void\ windowClosing(java.awt.event.WindowEvent)
+comment5.params=k
+comment5.target=void\ keyPressed(java.awt.event.KeyEvent)
+numComments=6
