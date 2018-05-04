@@ -13,13 +13,10 @@ public class Project {
     
     public static void main () {
         canvas = new AdvancedPicture(new Picture("resources//original.jpg"));
-        
-        canvas.blacken(30);
-        
-        canvas.greyscale();
+
+        canvas.recurse(10);
         
 
-        
         Display.go(canvas.getBufferedImage());
         
         //canvas.write("resources//four.jpg");

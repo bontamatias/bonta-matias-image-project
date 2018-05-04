@@ -89,10 +89,6 @@ public class AdvancedPicture extends Picture {
         }
     }
     
-    public void scale () {
-        
-    }
-    
     public void pixelSort () {
         int[][] pixelData = deconstructImage();
         
@@ -137,6 +133,27 @@ public class AdvancedPicture extends Picture {
                 target.setColor(Color.black);
             }
         }
+    }
+    
+    public void recurse (int limit) {
+        doRecurse(0, limit);
+    }
+    
+    private void doRecurse (int step, int limit) {
+        if (step < limit) {
+            Pixel source = null;
+            Pixel target = null;
+           
+            for (int x = 0; x < getWidth(); x+=2) {
+                for (int y = 0; y < getHeight(); y+=2) {
+                    target = getPixel(x/2, y/2);
+                    source = getPixel(x, y);
+                    target.setColor(source.getColor());
+                }
+            }
+            doRecurse(++step, limit);
+        }
+        
     }
     
     private int[][] deconstructImage () {
