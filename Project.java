@@ -12,9 +12,11 @@ public class Project {
     static AdvancedPicture canvas;
     
     public static void main () {
-        canvas = new AdvancedPicture(new Picture("resources//original.jpg"));
+        canvas = new AdvancedPicture(new Picture("resources//one.jpg"));
 
-        canvas.recurse(10);
+        canvas.recurse(1);
+        canvas.mirrorVertical();
+        canvas.mirrorHorizontal();
         
 
         Display.go(canvas.getBufferedImage());
