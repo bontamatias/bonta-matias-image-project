@@ -33,6 +33,19 @@ public class AdvancedPicture extends Picture {
         super(copyPicture);
     }
     
+    public void copyTo (SimplePicture image, int xStart, int yStart) {
+        Pixel source = null;
+        Pixel target = null;
+       
+        for (int x = xStart; x < image.getWidth() + xStart; x++) {
+            for (int y = yStart; y < image.getHeight() + yStart; y++) {
+                source = image.getPixel(x - xStart, y - yStart);
+                target = this.getPixel(x, y);
+                target.setColor(source.getColor());
+            }
+        }
+    }
+    
     public void mirrorVertical () {
         Pixel source = null;
         Pixel target = null;
@@ -153,7 +166,6 @@ public class AdvancedPicture extends Picture {
             }
             doRecurse(++step, limit);
         }
-        
     }
     
     private int[][] deconstructImage () {
