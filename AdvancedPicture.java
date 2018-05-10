@@ -137,7 +137,7 @@ public class AdvancedPicture extends Picture {
         }
     }
     
-    public void blacken (int cutoff) {        
+    public void filter (int cutoff) {        
         for (Pixel target : getPixels()) {
             if (target.getAverage() > cutoff) {
                 target.setColor(Color.white);
