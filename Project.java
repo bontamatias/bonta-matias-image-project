@@ -44,12 +44,11 @@ public class Project {
         //create a new image to edit
         AdvancedPicture image5 = new AdvancedPicture(new Picture("resources//original.jpg"));
         
-        image5.modify(100);
-        
         //create a new image to edit
         AdvancedPicture image6 = new AdvancedPicture(new Picture("resources//original.jpg"));
         
         image6.filter(100);
+        
         
         //generate a canvas big enough to fix six of the image
         canvas = new AdvancedPicture(originalImage.getWidth() * 3, originalImage.getHeight() * 2);
@@ -65,6 +64,6 @@ public class Project {
 
         canvas.explore();
         
-        //canvas.write("resources//four.jpg");
+        canvas.write("resources//product.jpg");
     }
 }

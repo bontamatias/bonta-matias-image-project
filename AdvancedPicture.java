@@ -25,14 +25,19 @@ public class AdvancedPicture extends Picture {
     }
     
     /**
-    * Constructor that takes a picture and creates a
-    * copy of that picture
+    * Constructor that takes a picture and creates a copy of that picture
     */
     public AdvancedPicture (Picture copyPicture) {
         // let the parent class do the copy
         super(copyPicture);
     }
     
+    /**
+     * Method to copy one image onto another image at given coordinates
+     * @param image to copy
+     * @param x coordinate to start at
+     * @parama y coordinate to start at
+     */
     public void copyTo (SimplePicture image, int xStart, int yStart) {
         Pixel source = null;
         Pixel target = null;
@@ -46,6 +51,9 @@ public class AdvancedPicture extends Picture {
         }
     }
     
+    /**
+     * Mirrors this image vertically, top copied to bottom
+     */
     public void mirrorVertical () {
         Pixel source = null;
         Pixel target = null;
@@ -60,6 +68,9 @@ public class AdvancedPicture extends Picture {
         }
     }
     
+    /**
+     * Mirrors this image horizontally, left copied to right
+     */
     public void mirrorHorizontal () {
         Pixel source = null;
         Pixel target = null;
@@ -74,6 +85,9 @@ public class AdvancedPicture extends Picture {
         }
     }
     
+    /**
+     * Mirrors this image vertically, bottom copied to top
+     */
     public void mirrorVerticalInvert () {
         Pixel source = null;
         Pixel target = null;
@@ -88,6 +102,9 @@ public class AdvancedPicture extends Picture {
         }
     }
     
+    /**
+     * Mirrors this image horizontally, right copied to left
+     */
     public void mirrorHorizontalInvert () {
         Pixel source = null;
         Pixel target = null;
@@ -102,6 +119,9 @@ public class AdvancedPicture extends Picture {
         }
     }
     
+    /**
+     * Sorts pixels in rows, not really sure why I did this, it sorts the raw pixel data in hex... so I think it sorts by alpha but who knows...
+     */
     public void pixelSort () {
         int[][] pixelData = deconstructImage();
         
@@ -114,12 +134,19 @@ public class AdvancedPicture extends Picture {
         rebuildImage(pixelData);
     }
     
+    /**
+     * Greyscales the image
+     */
     public void greyscale () {
         for (Pixel target : getPixels()) {
             target.setColor(new Color((int) target.getAverage(), (int) target.getAverage(), (int) target.getAverage()));
         }
     }
     
+    /**
+     * Adds a given amount to each color value in each pixel
+     * @param modifier
+     */
     public void modify (int mod) {
         int red;
         int green;
@@ -137,6 +164,10 @@ public class AdvancedPicture extends Picture {
         }
     }
     
+    /**
+     * Filters to pure black or white based on the cutoff
+     * @param cutoff
+     */
     public void filter (int cutoff) {        
         for (Pixel target : getPixels()) {
             if (target.getAverage() > cutoff) {
@@ -148,10 +179,19 @@ public class AdvancedPicture extends Picture {
         }
     }
     
+    /**
+     * Indirect call for recursive method
+     * @param amount of times to recurse
+     */
     public void recurse (int limit) {
         doRecurse(0, limit);
     }
     
+    /**
+     * Direct call for recursive method
+     * @param which recursion currently on
+     * @param amount of times to recurse
+     */
     private void doRecurse (int step, int limit) {
         if (step < limit) {
             Pixel source = null;
@@ -168,6 +208,10 @@ public class AdvancedPicture extends Picture {
         }
     }
     
+    /**
+     * Returns a 2D array of pixels for the image
+     * @returns int[][]
+     */
     private int[][] deconstructImage () {
         int[][] pixelData = new int[getWidth()][getHeight()];
         
@@ -180,6 +224,10 @@ public class AdvancedPicture extends Picture {
         return pixelData;
     }
     
+    /**
+     * Builds an image from a 2D array
+     * @param 2D array of ints
+     */
     private void rebuildImage (int[][] pixelData) {
         for (int x = 0; x < getWidth(); x++) {
             for (int y = 0; y < getHeight(); y++) {
@@ -188,6 +236,10 @@ public class AdvancedPicture extends Picture {
         }
     }
     
+    /**
+     * Creates a randomized Color object
+     * @returns Color
+     */
     private Color random() {
         return new Color(gen.nextInt(255),gen.nextInt(255),gen.nextInt(255));
     }

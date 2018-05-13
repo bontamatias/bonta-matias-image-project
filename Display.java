@@ -1,3 +1,5 @@
+//pretty much just a simple frameless display written using Swing, not needed or used.
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
